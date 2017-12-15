@@ -1,0 +1,31 @@
+var fetch = require('node-fetch');
+var giphyURL = 'http://localhost:3000/api';
+var categoriesEndpoint = '/categories';
+
+var getCategories = function (req, res, callback) {
+    fetch(giphyURL + categoriesEndpoint)
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (body) {
+            callback(req, res, body);
+        })
+}
+
+var renderHomepage = function (req, res, next, content) {
+    res.render('index', {
+        data: content,
+        title: 'Express',
+        metaAuthor: 'Leonardo Felipa',
+        metaDescription: 'Boilerplate',
+        metaKeywords: 'Boilerplate, HTML5, CSS3, ExpressJS, NodeJS, Mongo, Mongoose, Angular'
+    });
+}
+
+module.exports.getHomepage = function (req, res, next) {
+    getCategories(req, res, function (req, res, responseData) {
+        renderHomepage(req, res, next, responseData);
+    })
+
+
+}

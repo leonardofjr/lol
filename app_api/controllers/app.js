@@ -9,9 +9,10 @@ var sendJSONresponse = function(res, status, content) {
 module.exports.giphyCategories = function(req, res, next) {
     client.categoriesForGifs({})
     .then((response) => {
-        sendJSONresponse(res, 200, response);
+        sendJSONresponse(res, 200, response.data);
     })
     .catch((err) => {
-  
+        console.log(err);
     })
 }
+
