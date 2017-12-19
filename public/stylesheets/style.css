@@ -35,8 +35,16 @@ footer, header, hgroup, menu, nav, section {
 
 /******* CH02 - Typography *******/
 /******* CH03 - Page Structure *******/
+body {
+  background-color: #333; }
+
 /******* CH04 - Header & Navigation *******/
 /******* CH05 - Content & Media *******/
+#trending-container img {
+  box-sizing: border-box;
+  border: 4px solid white;
+  margin: 10px; }
+
 /******* CH06 - Footer *******/
 footer {
   background: #000;
